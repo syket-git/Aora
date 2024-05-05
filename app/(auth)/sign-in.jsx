@@ -7,7 +7,7 @@ import CustomButton from "../../components/CustomButton";
 import FormField from "../../components/FormField";
 import { images } from "../../constants";
 import { useGlobalContext } from "../../context/globalProvider";
-import { signIn } from "../../lib/appwrite";
+import { getCurrentUser, signIn } from "../../lib/appwrite";
 
 const SignIn = () => {
   const { setUser, setIsLoggedIn } = useGlobalContext();
@@ -30,8 +30,10 @@ const SignIn = () => {
     try {
       const result = await signIn(email, password);
 
+      const res = await getCurrentUser();
+
       if (result) {
-        setUser(result);
+        setUser(res);
         setIsLoggedIn(true);
         router.replace("/home");
       } else {

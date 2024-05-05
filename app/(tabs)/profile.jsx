@@ -3,7 +3,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
 import EmptyState from "../../components/EmptyState";
 import InfoBox from "../../components/InfoBox";
 import VideoCard from "../../components/VideoCard";
@@ -15,13 +14,7 @@ import useAppWrite from "../../lib/useAppWrite";
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
 
-  const { data, refetch } = useAppWrite(() => getUserPost(user?.$id));
-
-  useEffect(() => {
-    if (user) {
-      refetch();
-    }
-  }, [user]);
+  const { data } = useAppWrite(() => getUserPost(user?.$id));
 
   const logout = async () => {
     await signOut();
@@ -30,8 +23,6 @@ const Profile = () => {
 
     router.replace("/sign-in");
   };
-
-  console.log({ profile: data });
 
   return (
     <SafeAreaView className="bg-primary h-full">
