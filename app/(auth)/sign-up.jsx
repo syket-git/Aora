@@ -31,8 +31,6 @@ const SignUp = () => {
     try {
       const result = await createUser(email, password, username);
 
-      console.log({ result });
-
       // set it to the global context
       router.replace("/home");
     } catch (error) {

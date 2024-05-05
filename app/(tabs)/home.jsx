@@ -12,13 +12,9 @@ import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import useAppWrite from "../../lib/useAppWrite";
 
 const Home = () => {
-  const { data, refetch, isLoading } = useAppWrite(getAllPosts);
+  const { data, refetch } = useAppWrite(getAllPosts);
 
-  const {
-    data: latestPosts,
-    refetch: latestPostRefetch,
-    isLoading: latestPostLoading,
-  } = useAppWrite(getLatestPosts);
+  const { data: latestPosts } = useAppWrite(getLatestPosts);
 
   const [refreshing, setRefreshing] = useState(false);
 
