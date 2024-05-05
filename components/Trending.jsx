@@ -39,7 +39,7 @@ const TrendingItem = ({ item, activeItem }) => {
     >
       {play ? (
         <Video
-          source={{ uri: item.video }}
+          source={{ uri: item?.video }}
           className="w-52 h-72 rounded-[35px] mt-3 bg-white/10"
           resizeMode={ResizeMode.CONTAIN}
           useNativeControls
@@ -58,7 +58,7 @@ const TrendingItem = ({ item, activeItem }) => {
         >
           <ImageBackground
             className="w-52 h-72 rounded-[35px] overflow-hidden shadow-lg shadow-black/40 "
-            source={{ uri: item?.creator?.avatar }}
+            source={{ uri: item?.thumbnail }}
           />
           <Image
             source={icons.play}
